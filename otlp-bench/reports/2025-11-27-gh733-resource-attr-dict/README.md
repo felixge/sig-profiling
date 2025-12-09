@@ -74,7 +74,7 @@ Resource: container.id="6ad3c930c936050866dfe2262244430b843010791d6e3b9dda1b2bf5
 
 However, this causes a lot of duplication of `Resource` attribute keys and values, e.g. `k8s.container.name`, `process.executable.name`, `process.executable.path`, `process.pid` have their keys and values duplicated in the example above.
 
-To deal with this problem, PR [#733](https://github.com/open-telemetry/opentelemetry-proto/pull/733) suggests to modify `KeyValue` and `AnyValue` messsages to support referencing keys and values from the `ProfilesDictionary` string table. This means the example from above would be transformed like shown below. Note the `&` to indicate dictionary references.
+To deal with this problem, PR [#733](https://github.com/open-telemetry/opentelemetry-proto/pull/733) suggests to modify `KeyValue` and `AnyValue` messages to support referencing keys and values from the `ProfilesDictionary` string table. This means the example from above would be transformed like shown below. Note the `&` to indicate dictionary references.
 
 ```
 Resource: &container.id=&"1e82d7e19251ec59126d036da362a7bcf318420c2e5c9be3818ebc5f92873469", &k8s.container.name=&"bar", &process.executable.name=&"java", &process.executable.path=&"/usr/local/openjdk-17/bin/java", &process.pid=236982, ...
